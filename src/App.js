@@ -1,26 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TodoList from './Components/Todo_list/Todo_list'
+import FormRegister from './Components/Form_register/Form_Register'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  // useRouteMatch,
+  // useParams
+} from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <ul>
+        <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/todo_list">Todo_List</Link>
+          </li>
+          <li>
+            <Link to="/form_register">Form_Register</Link>
+          </li>
+        </ul>
+        <hr/>
+        <div className='center'>
+        <Switch>
+          <Route path="/todo_list">
+            <TodoList />
+          </Route>
+          <Route path="/form_register">
+            <FormRegister />
+          </Route>
+        </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 
-export default App;
